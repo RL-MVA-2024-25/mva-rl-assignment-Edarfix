@@ -1,7 +1,6 @@
 from gymnasium.wrappers import TimeLimit
 from env_hiv import HIVPatient
 import numpy as np
-from tqdm import tqdm
 from sklearn.ensemble import RandomForestRegressor
 import pickle
 import os
@@ -95,7 +94,7 @@ class ProjectAgent:
             S, A, R, S2, D = self.collect_samples(self.env, horizon = horizon,eps = 0.2)
             SA = np.concatenate((S,A),axis=1)
             # now we add new datetime
-            for nb in tqdm(range(nb_iter)):
+            for nb in range(nb_iter):
                 S_prime,A_prime,R_prime,S2_prime,D_prime = self.collect_samples(env, horizon = horizon,eps = eps)
                 SA_prime = np.concatenate((S2_prime,A_prime),axis=1)
                 S , A , R , S2 , D = np.vstack((S,S_prime)), np.vstack((A,A_prime)), np.hstack((R,R_prime)), np.vstack((S2,S2_prime)), np.hstack((D,D_prime))
