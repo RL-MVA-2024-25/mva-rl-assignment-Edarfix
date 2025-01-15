@@ -1,6 +1,5 @@
 from gymnasium.wrappers import TimeLimit
 from env_hiv import HIVPatient
-from fast_env_py import FastHIVPatient
 import numpy as np
 from tqdm import tqdm
 from sklearn.ensemble import RandomForestRegressor
